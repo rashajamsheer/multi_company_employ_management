@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 col-lg-4">
+            <div class="card" style="box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);">
+                <div class="card-header text-center">
+                    <h5 class="mb-0">Confirm Delete Department</h5>
+                </div>
+                <div class="card-body text-center">
+                    <p>Are you sure you want to delete the following department?</p>
+                    <p><strong>Name:</strong> {{ department.name }}</p>
+                    <p><strong>Company:</strong> {{ department.company }}</p>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+
+                    <a href="{% url 'emploapp:department_list' %}" class="btn btn-outline-secondary mt-2">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

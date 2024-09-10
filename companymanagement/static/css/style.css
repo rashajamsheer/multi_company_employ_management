@@ -1,0 +1,46 @@
+.body {
+background-color: #fff;
+}
+
+.my_footer{
+         height:50px;
+         background-color:$gray-100;
+}
+
+.my_footer p{
+           padding-top:25px;
+           font-size:18px;
+}
+
+
+}
+.my_logo_class {
+    max-width: 170px;
+    height: auto;
+}
+
+.banner {
+    width: 100%;
+    max-width: 800px;
+}
+
+.about-paragraph {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify; /* or just 'text-justify' if using Bootstrap */
+}
+
+
+
+.form-container {
+    min-height: 400px; /* Adjust the value as needed */
+    margin-bottom: 50px;
+}
+
+
+.form-control {
+    width: 100%;
+}
+
+
+

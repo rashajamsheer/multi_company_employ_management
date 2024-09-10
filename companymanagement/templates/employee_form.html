@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+    <div class="row mt-2 mb-5">
+        <div class="container-fluid d-flex align-items-center justify-content-center" style="min-height: 68vh;">
+            <div class="card col-sm-6 col-lg-4" style="box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); background-color: #007bff; padding: 20px; border-radius: 15px;">
+                <h2 class="text-center mb-4" style="color:  #ffffff;">
+                    {% if employee_form.instance.pk %}Update Employee{% else %}Create Employee{% endif %}
+                </h2>
+                <form method="POST" enctype="multipart/form-data"> <!-- Added enctype for file uploads -->
+                    {% csrf_token %}
+                    <!-- Render employee form -->
+                    <div class="form-group">
+                        {{ employee_form.as_p }}
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-light btn-block" style="color: #007bff;">
+                            {% if employee_form.instance.pk %}Update{% else %}Create{% endif %}
+                        </button>
+                    </div>
+                </form>
+                <br>
+                <div class="text-center">
+                    <a href="{% url 'emploapp:employee_list' %}" class="btn btn-outline-light">Back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

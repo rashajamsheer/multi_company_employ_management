@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Profile for {{ profile.user.username }}</h3>
+
+    <div class="card mb-4" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <div class="card-body">
+            <h5 class="card-title">Profile Information</h5>
+            <p><strong>Company:</strong> {{ profile.company.name }}</p>
+            <p><strong>Department:</strong> {{ profile.department.name }}</p>
+            <p><strong>Role:</strong> {{ profile.role.name }}</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="mb-4">
+        <h2>Attendance</h2>
+        {% if attendance_today %}
+            <p><strong>Clock In Time:</strong> {{ attendance_today.clock_in_time }}</p>
+            {% if attendance_today.clock_out_time %}
+                <p><strong>Clock Out Time:</strong> {{ attendance_today.clock_out_time }}</p>
+            {% else %}
+                <a href="{% url 'emploapp:clock_out' %}" class="btn btn-warning">Clock Out</a>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'emploapp:clock_in' %}" class="btn btn-success">Clock In</a>
+        {% endif %}
+    </div>
+
+    <hr>
+
+    <div>
+        <h2>Leave Requests</h2>
+        <a href="{% url 'emploapp:leave_request' %}" class="btn btn-primary mb-3">Request Leave</a>
+        <ul class="list-group">
+            {% if leave_requests %}
+                {% for leave in leave_requests %}
+                    <li class="list-group-item">
+                        <strong>Name of Employee:</strong> {{ leave.employee }}<br>
+                        <strong>Duration of Leave:</strong> From {{ leave.start_date }} to {{ leave.end_date }}<br>
+                        <strong>Reason:</strong> {{ leave.reason }}<br>
+                        <strong>Status:</strong> {{ leave.approved|yesno:"Approved,Pending" }}
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="list-group-item">No leave requests found.</li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header text-center bg-primary text-white">
+            <h2 class="mb-0">{% if form.instance.pk %}Update Department{% else %}Create Department{% endif %}</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-success">
+                        {% if form.instance.pk %}Update{% else %}Create{% endif %}
+                    </button>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <a href="{% url 'emploapp:department_list' %}" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

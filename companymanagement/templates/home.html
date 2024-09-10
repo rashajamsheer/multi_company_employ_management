@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col text-center">
+            <a href="{% url 'businessapp:index' %}">
+                <img src="{% static 'img/logo.png' %}" alt="Logo" class="my_logo_class" style="max-width: 150px; height: auto;">
+            </a>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4 mb-4">
+        <div class="col text-center">
+            <img src="{% static 'img/banner.png' %}" alt="Our Products" class="img-fluid" style="width: 100%; max-width: 800px;">
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <h1 class="my_title mb-4">ABOUT US</h1>
+            <p class="text-justify" style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">
+                Welcome to our Business and Employee Management App, your ultimate solution for streamlined operations and enhanced productivity. Designed with simplicity and efficiency in mind, our app empowers businesses to effortlessly manage multiple companies, departments, and employees from a single platform. Experience intuitive features such as real-time attendance tracking, leave management, and comprehensive employee profiles, all crafted to enhance collaboration and communication within your organization. With a user-friendly interface and powerful analytics tools, you can easily monitor performance and make informed decisions, driving your business towards success. Simplify your management processes today and unlock the full potential of your workforce!
+            </p>
+        </div>
+    </div>
+</div>
+<div class="mt-5"></div>
+{% endblock %}
